@@ -669,7 +669,7 @@ class MessageTile extends StatelessWidget {
                           width: 8,
                         ),
                         Container(
-                          child: Text(
+                          child: Text( 
                             sendBy,
                             style: TextStyle(color: Colors.white, fontSize: 15),
                           ),
