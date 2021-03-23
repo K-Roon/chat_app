@@ -126,7 +126,7 @@ class ChatMethods {
           print(e);
         });
         addInfo(chatRoomId,
-            "${Constants.myName} 님이 $friendName 님을 초대했습니다.\n$friendName 님! 피자는 가져오셨겠죠?");
+            "${Constants.myName} 님이 $friendName 님을 두둥 등장 시켰어요!");
       }
     });
   }
