@@ -110,7 +110,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
                     MaterialPageRoute(builder: (context) => ChatRoom()));
               },
             ),
-            
+
             //로그아웃
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
