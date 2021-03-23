@@ -423,11 +423,11 @@ class MessageTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                margin: EdgeInsets.only(left: 20, right: 20, bottom: 5),
+                margin: EdgeInsets.only(left: 15, right: 15, bottom: 15),
                 padding:
-                    EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+                    EdgeInsets.only(top: 5, bottom: 5, left: 15, right: 15),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(15),
                   color: Color(0x3AFFFFFF),
                 ),
                 child: Text(message,
@@ -505,9 +505,9 @@ class MessageTile extends StatelessWidget {
                       ? EdgeInsets.only(left: 20)
                       : EdgeInsets.only(right: 20),
                   padding:
-                      EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 20),
+                      EdgeInsets.only(top: 5, bottom: 5, left: 15, right: 15),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(5),
                     color: isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
                   ),
                   child: Row(
@@ -607,7 +607,7 @@ class MessageTile extends StatelessWidget {
                       ? EdgeInsets.only(left: 20)
                       : EdgeInsets.only(right: 20),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                   child: Image(
                     height: 150,
@@ -682,19 +682,13 @@ class MessageTile extends StatelessWidget {
                     ? EdgeInsets.only(left: 20)
                     : EdgeInsets.only(right: 20),
                 padding:
-                    EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+                    EdgeInsets.only(top: 5, bottom: 5, left: 15, right: 15),
                 decoration: BoxDecoration(
-                  borderRadius: isSendByMe
-                      ? BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(2))
-                      : BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                          bottomLeft: Radius.circular(2),
-                          bottomRight: Radius.circular(20)),
+                  borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15),
+                          bottomLeft: isSendByMe ? Radius.circular(15) : Radius.circular(2),
+                          bottomRight: isSendByMe ? Radius.circular(2) : Radius.circular(15)),
                   color: isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
                 ),
                 child: Text(message,
@@ -702,7 +696,6 @@ class MessageTile extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
-                        fontFamily: 'OverpassRegular',
                         fontWeight: FontWeight.w300)),
               ),
               Container(

@@ -24,7 +24,6 @@ class _FriendsScreenState extends State<FriendsScreen> {
   AuthService authMethods = new AuthService();
   DatabaseMethods databaseMethods = new DatabaseMethods();
   Stream friends;
-
   String version;
 
   Widget friendsList() {
@@ -37,8 +36,9 @@ class _FriendsScreenState extends State<FriendsScreen> {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return FriendsTile(
-                      snapshot.data.docs[index].data()['friendName'].toString(),
-                      snapshot.data.docs[index].data()['friendId'],);
+                    snapshot.data.docs[index].data()['friendName'].toString(),
+                    snapshot.data.docs[index].data()['friendId'],
+                  );
                 })
             : Container();
       },
@@ -60,7 +60,11 @@ class _FriendsScreenState extends State<FriendsScreen> {
   void initState() {
     getUserFriends();
 
-    FirebaseFirestore.instance.collection("notifyUpdate").doc("lastVersion").get().then((value) {
+    FirebaseFirestore.instance
+        .collection("notifyUpdate")
+        .doc("lastVersion")
+        .get()
+        .then((value) {
       DocumentSnapshot documentSnapshot = value;
       version = documentSnapshot.data()["lastVersion"];
     });
@@ -135,7 +139,8 @@ class _FriendsScreenState extends State<FriendsScreen> {
                           child: new Text("여기를 길게 눌러 로그아웃"),
                           onPressed: () {},
                           onLongPress: () {
-                            HelperFunctions.saveUserLoggedInSharedPreference(false);
+                            HelperFunctions.saveUserLoggedInSharedPreference(
+                                false);
                             Navigator.pop(context);
                             authService.signOut();
                             Navigator.pushReplacement(
@@ -155,7 +160,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
               icon: Icon(CupertinoIcons.info_circle),
               tooltip: "앱 정보 및 업데이트 확인",
               onPressed: () {
-                showDialog (
+                showDialog(
                   context: context,
                   builder: (BuildContext context) {
                     // return object of type Dialog
@@ -188,8 +193,7 @@ class FriendsTile extends StatelessWidget {
   final String friendName;
   final String friendId;
 
-  FriendsTile(
-      this.friendName, this.friendId);
+  FriendsTile(this.friendName, this.friendId);
 
   static const _chars =
       'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
@@ -226,9 +230,9 @@ class FriendsTile extends StatelessWidget {
           ),
           Spacer(),
           IconButton(
-            icon: Icon(Icons.chat_bubble_outline_sharp),
+            icon: Icon(Icons.more_horiz),
             color: Colors.white,
-            tooltip: "$friendName와(과) 대화 나누기",
+            tooltip: "$friendName 님의 상세 정보",
             onPressed: () {
               listPushed(context);
             },
@@ -239,14 +243,75 @@ class FriendsTile extends StatelessWidget {
   }
 
   void listPushed(context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Row(
+              children: [
+                Container(
+                  height: 40,
+                  width: 40,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(40)),
+                  child: Text(
+                    "${friendName.substring(0, 1).toUpperCase()}",
+                    style: mediumTextStyle(),
+                  ),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Container(
+                  child: Text(
+                    friendName,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+                Spacer(),
+                IconButton(
+                  icon: Icon(Icons.more_horiz),
+                  color: Colors.white,
+                  tooltip: "$friendName 님의 상세 정보",
+                  onPressed: () {
+                    listPushed(context);
+                  },
+                )
+              ],
+            ),
+            content: new Text("이 사용자와 무엇을 하시겠어요?"),
+            actions: <Widget>[
+              new FlatButton(
+                child: Row(
+                    children: [Icon(Icons.cancel_rounded), new Text(" 돌아가기")]),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              new FlatButton(
+                child: Row(children: [
+                  Icon(Icons.message_rounded),
+                  new Text(" 대화 나누기")
+                ]),
+                onPressed: () {
+                  pushConv(friendId, context);
+                },
+              )
+            ],
+          );
+        });
+  }
+
+  void pushConv(friendId, context) {
     ChatMethods().isAlreadyExistChatRoom(friendId).then((value) {
       print(value);
       if (value != null) {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    ConversationScreen(value.toString())));
+                builder: (context) => ConversationScreen(value.toString())));
       } else {
         print("value is null!!");
 
@@ -264,13 +329,11 @@ class FriendsTile extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) =>
-                      ConversationScreen(chatRoomId)));
+                  builder: (context) => ConversationScreen(chatRoomId)));
         } else {
-          print("본인은 본인에게 메시지를 전송할 수 없어요.");
+          print("나 자신은 영원한 인생의 동반자입니다.");
         }
       }
     });
-
   }
 }
