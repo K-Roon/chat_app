@@ -442,6 +442,7 @@ class MessageTile extends StatelessWidget {
           ),
         );
         break;
+        ///File인 경우
       case "file":
         return GestureDetector(
           onTap: () {
