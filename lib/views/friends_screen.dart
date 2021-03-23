@@ -110,6 +110,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
                     MaterialPageRoute(builder: (context) => ChatRoom()));
               },
             ),
+            
             //로그아웃
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -134,6 +135,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
                           child: new Text("여기를 길게 눌러 로그아웃"),
                           onPressed: () {},
                           onLongPress: () {
+                            HelperFunctions.saveUserLoggedInSharedPreference(false);
                             Navigator.pop(context);
                             authService.signOut();
                             Navigator.pushReplacement(
