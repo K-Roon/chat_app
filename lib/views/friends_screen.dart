@@ -278,22 +278,22 @@ class FriendsTile extends StatelessWidget {
                   onPressed: () {
                     listPushed(context);
                   },
+                ),
+                new IconButton(
+                  icon: Icon(Icons.clear_rounded),
+                  tooltip: "돌아가기",
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 )
               ],
             ),
             content: new Text("이 사용자와 무엇을 하시겠어요?"),
-            actions: <Widget>[
+            actions: <Widget> [
               new FlatButton(
-                child: Row(
-                    children: [Icon(Icons.cancel_rounded), new Text(" 돌아가기")]),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-              new FlatButton(
-                child: Row(children: [
+                child: Column(children: [
                   Icon(Icons.message_rounded),
-                  new Text(" 대화 나누기")
+                  new Text("대화 나누기")
                 ]),
                 onPressed: () {
                   pushConv(friendId, context);

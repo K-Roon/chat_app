@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:chat_app/helper/helperfunctions.dart';
 import 'package:chat_app/helper/theme.dart';
 import 'package:chat_app/services/auth.dart';
@@ -7,6 +9,7 @@ import 'package:chat_app/views/forgot_password.dart';
 import 'package:chat_app/widgets/widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -109,8 +112,7 @@ class _SignInState extends State<SignIn> {
               builder: (BuildContext context) {
                 return AlertDialog(
                   title: new Text("사용자를 찾을 수 없음(혹은 탈퇴한 계정)"),
-                  content: new Text(
-                      "사용자를 찾을 수 없습니다.\n혹시 계정을 탈퇴하셨나요?"),
+                  content: new Text("사용자를 찾을 수 없습니다.\n혹시 계정을 탈퇴하셨나요?"),
                   actions: <Widget>[
                     new FlatButton(
                       child: new Text("확인"),
@@ -177,7 +179,7 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarCustom(context, "로그인", true),
-      //resizeToAvoidBottomPadding: false,
+      //resizeToAvoidBottomInset: false,
       body: isLoading
           ? Container(
               child: Center(child: CircularProgressIndicator()),
@@ -185,16 +187,17 @@ class _SignInState extends State<SignIn> {
           : Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [const Color(0x002F2F2F), const Color(0xff2F2F2F)],
-                    stops: [0.05, 0.5],
-                  ),
-                  borderRadius: BorderRadius.circular(15)),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [const Color(0x002F2F2F), const Color(0xff2F2F2F)],
+                  stops: [0.05, 0.5],
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Spacer(),
                   Form(
                     key: formKey,
                     child: Column(
@@ -232,9 +235,6 @@ class _SignInState extends State<SignIn> {
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 16,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -332,7 +332,7 @@ class _SignInState extends State<SignIn> {
                     ],
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 15,
                   )
                 ],
               ),

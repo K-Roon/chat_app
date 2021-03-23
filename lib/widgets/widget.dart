@@ -17,7 +17,6 @@ Widget appBarCustom(BuildContext context, String text, bool iscenterTitle){
 }
 
 InputDecoration textFieldInputDecoration(String hintText) {
-
   return InputDecoration(
       hintText: hintText,
       hintStyle: TextStyle(color: Colors.white54,),
@@ -36,7 +35,7 @@ TextStyle biggerTextStyle() {
 }
 
 TextStyle mediumTextStyle() {
-  return TextStyle(color: Colors.white, fontSize: 16);
+  return TextStyle(color: Colors.white, fontSize: 15);
 }
 
 TextStyle smallTextStyle() {

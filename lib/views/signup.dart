@@ -89,8 +89,8 @@ class _SignUpState extends State<SignUp> {
                   ),
                   borderRadius: BorderRadius.circular(15)),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Spacer(),
                   Form(
                     key: formKey,
                     child: Column(
@@ -212,7 +212,7 @@ class _SignUpState extends State<SignUp> {
                     ],
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 15,
                   )
                 ],
               ),
