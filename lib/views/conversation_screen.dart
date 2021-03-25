@@ -136,7 +136,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                               return AlertDialog(
                                 title: Text("채팅방에 새로운 이름 주기"),
                                 content: Text(
-                                  "채팅방 제목을 새로운 이름으로 변경할 경우 초대되어 있는 사용자 전체에게 이 제목이 적용되요.\n새로운 채팅방 이름을 지정할 때에는 초대되어있는 사용자 모두를 만족할 수 있는 제목으로 지정해주세요.\n채팅방에게 새로운 이름을 부여함으로써 일어난 인한 책임은 본인에게 귀속됩니다.",
+                                  "채팅방 제목을 새로운 이름으로 변경할 경우 초대되어 있는 사용자 전체에게 이 제목이 적용되요.\n새로운 채팅방 이름을 지정할 때에는 초대되어있는 사용자 모두를 만족할 수 있는 제목으로 지정해주세요.\n채팅방에게 새로운 이름을 부여함으로써 일어난 일에 대한 책임은 본인에게 있습니다.",
                                   style: TextStyle(color: Colors.black),
                                 ),
                                 actions: [
