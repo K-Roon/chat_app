@@ -33,7 +33,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -43,13 +43,12 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.kroon.chat_app"
         minSdkVersion 23
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
-
     }
+
     signingConfigs {
         release {
             keyAlias keystoreProperties['keyAlias']
@@ -64,7 +63,7 @@ android {
             // TODO: release 빌드 버전을 위한 서명 구성을 추가하세요.
             // 현재는 `flutter run --release`가 디버그용 키로 서명되어 동작합니다.
             signingConfig signingConfigs.release
-
+            multiDexEnabled true
             minifyEnabled true
             useProguard true
 
@@ -74,6 +73,7 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled true
             useProguard true
+            multiDexEnabled true
         }
     }
 }
