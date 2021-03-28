@@ -1,6 +1,6 @@
 # chat_app
 
-Chatting App
+This is chatting App.
 
 ## Getting Started
 
