@@ -67,17 +67,17 @@ class ChatMethods {
       for (i = 0; i + 1 < querySnapshot.size; i++) {
         print(i);
         if (querySnapshot.docs[i]
-                .data()["isOneVone"]
+                .get("isOneVone")
                 .toString()
                 .trim()
                 .replaceAll("[", "")
                 .replaceAll("]", "") ==
             "true") {
-          inUsers = querySnapshot.docs[i].data()["users"];
+          inUsers = querySnapshot.docs[i].get("users");
           if (alreadyInUsers.toString() == inUsers.toString()) {
             print(
-                "이미 있는 채팅방 입니다!!\n채팅방 아이디!!: ${querySnapshot.docs[i].data()["chatroomId"]}");
-            return querySnapshot.docs[i].data()["chatroomId"];
+                "이미 있는 채팅방 입니다!!\n채팅방 아이디!!: ${querySnapshot.docs[i].get("chatroomId")}");
+            return querySnapshot.docs[i].get("chatroomId");
           }
         } else {
           print("이 사용자와 대화를 나눈 전적이 없음.");

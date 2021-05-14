@@ -66,7 +66,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
         .get()
         .then((value) {
       DocumentSnapshot documentSnapshot = value;
-      version = documentSnapshot.data()["lastVersion"];
+      version = documentSnapshot.get("lastVersion");
     });
 
     super.initState();
