@@ -62,7 +62,8 @@ class _ChatRoomState extends State<ChatRoom> {
         .get()
         .then((value) {
       DocumentSnapshot documentSnapshot = value;
-      version = documentSnapshot.data()["lastVersion"];
+      //version = documentSnapshot.data()["lastVersion"].get();
+      version = documentSnapshot.get("lastVersion");
     });
 
     super.initState();

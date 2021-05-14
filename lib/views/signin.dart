@@ -45,11 +45,11 @@ class _SignInState extends State<SignIn> {
 
           HelperFunctions.saveUserLoggedInSharedPreference(true);
           HelperFunctions.saveUserNameSharedPreference(
-              userInfoSnapshot.docs[0].data()["name"]);
+              userInfoSnapshot.docs[0].get("name"));
           HelperFunctions.saveUserEmailSharedPreference(
-              userInfoSnapshot.docs[0].data()["email"]);
+              userInfoSnapshot.docs[0].get("email"));
           HelperFunctions.saveUserIdSharedPreference(
-              userInfoSnapshot.docs[0].data()["userId"]);
+              userInfoSnapshot.docs[0].get("userId"));
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => ChatRoom()));
 
@@ -67,7 +67,7 @@ class _SignInState extends State<SignIn> {
                   title: new Text("아이디/비밀번호 오류"),
                   content: new Text("이메일 혹은 비밀번호가 달라요.\n다시 확인해보세요."),
                   actions: <Widget>[
-                    new FlatButton(
+                    new TextButton(
                       child: new Text("확인"),
                       onPressed: () {
                         Navigator.pop(context);
@@ -91,7 +91,7 @@ class _SignInState extends State<SignIn> {
                   content: new Text(
                       "Chatting Us 운영원칙을 위반하여 계정 사용이 정지되었습니다.\n관리자에게 문의하세요."),
                   actions: <Widget>[
-                    new FlatButton(
+                    new TextButton(
                       child: new Text("확인"),
                       onPressed: () {
                         Navigator.pop(context);
@@ -114,7 +114,7 @@ class _SignInState extends State<SignIn> {
                   title: new Text("사용자를 찾을 수 없음(혹은 탈퇴한 계정)"),
                   content: new Text("사용자를 찾을 수 없습니다.\n혹시 계정을 탈퇴하셨나요?"),
                   actions: <Widget>[
-                    new FlatButton(
+                    new TextButton(
                       child: new Text("확인"),
                       onPressed: () {
                         Navigator.pop(context);
@@ -139,7 +139,7 @@ class _SignInState extends State<SignIn> {
                       "몇 분 뒤에 자동으로 정지가 풀리며,\n" +
                       "당장 해제되길 바라신다면 관리자에게 문의해주세요.\n"),
                   actions: <Widget>[
-                    new FlatButton(
+                    new TextButton(
                       child: new Text("확인"),
                       onPressed: () {
                         Navigator.pop(context);
@@ -161,7 +161,7 @@ class _SignInState extends State<SignIn> {
                   title: new Text("알 수 없는 오류"),
                   content: new Text("알 수 없는 오류로 로그인에 실패했습니다.\n다시 시도해보세요."),
                   actions: <Widget>[
-                    new FlatButton(
+                    new TextButton(
                       child: new Text("확인"),
                       onPressed: () {
                         Navigator.pop(context);
