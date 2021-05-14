@@ -16,13 +16,13 @@ class ChatMethods {
         .snapshots();
   }
 
-  Future <String> getRoomName(String chatRoomId) async {
+  Future<String> getRoomName(String chatRoomId) async {
     return await FirebaseFirestore.instance
         .collection("ChatRoom")
         .doc(chatRoomId)
         .get()
         .then((DocumentSnapshot documentSnapshot) {
-          return documentSnapshot.get("chatName").toString();
+      return documentSnapshot.get("chatName").toString();
     });
   }
 
@@ -125,8 +125,8 @@ class ChatMethods {
         }).catchError((e) {
           print(e);
         });
-        addInfo(chatRoomId,
-            "${Constants.myName} 님이 $friendName 님을 두둥 등장 시켰어요!");
+        addInfo(
+            chatRoomId, "${Constants.myName} 님이 $friendName 님을 두둥 등장 시켰어요!");
       }
     });
   }
@@ -150,22 +150,22 @@ class ChatMethods {
   }
 
   ///파일 형식으로 된 쳇
-  addFile(String chatRoomId, String fileName, String DownloadUrl) {
-    addConvMsg(fileName, "file", chatRoomId, Download_url: DownloadUrl);
+  addFile(String chatRoomId, String fileName, String downloadUrl) {
+    addConvMsg(fileName, "file", chatRoomId, download_url: downloadUrl);
   }
 
   ///이미지 보냄
-  addImage(String chatRoomId, String fileName, String DownloadUrl) {
-    addConvMsg(fileName, "image", chatRoomId, Download_url: DownloadUrl);
+  addImage(String chatRoomId, String fileName, String downloadUrl) {
+    addConvMsg(fileName, "image", chatRoomId, download_url: downloadUrl);
   }
 
   ///채팅방에서 대화를 만듭니다.
   addConvMsg(String message, String type, String chatRoomId,
-      {String Download_url}) {
+      {String download_url}) {
     Map<String, dynamic> messageMap = {
       "message": message,
       "type": type,
-      "Download_url": Download_url,
+      "Download_url": download_url,
       "sendBy": Constants.myName,
       "UNIXtime": DateTime.now().millisecondsSinceEpoch,
       "date":
