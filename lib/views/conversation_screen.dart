@@ -121,13 +121,13 @@ class _ConversationScreenState extends State<ConversationScreen> {
                       ),
                     ),
                     actions: [
-                      FlatButton(
+                      TextButton(
                         child: Text("취소"),
                         onPressed: () {
                           Navigator.pop(context);
                         },
                       ),
-                      FlatButton(
+                      TextButton(
                         child: Text("적용"),
                         onPressed: () {
                           showDialog(
@@ -140,14 +140,14 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                   style: TextStyle(color: Colors.black),
                                 ),
                                 actions: [
-                                  FlatButton(
+                                  TextButton(
                                     child: Text("취소"),
                                     onPressed: () {
                                       Navigator.pop(context);
                                       Navigator.pop(context);
                                     },
                                   ),
-                                  FlatButton(
+                                  TextButton(
                                     child: Text("여기를 길게 눌러 확인"),
                                     onPressed: () {},
                                     onLongPress: () {
@@ -184,11 +184,11 @@ class _ConversationScreenState extends State<ConversationScreen> {
                       style: TextStyle(color: Colors.black),
                     ),
                     actions: [
-                      FlatButton(
+                      TextButton(
                         child: Text("취소"),
                         onPressed: () => Navigator.pop(context),
                       ),
-                      FlatButton(
+                      TextButton(
                         child: Text("여기를 길게 눌러 나가기"),
                         onPressed: () {},
                         onLongPress: () {
@@ -247,7 +247,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                               title: Text("파일/사진 공유"),
                               content: Text("파일, 사진 중 어떤 것을 공유할까요?"),
                               actions: [
-                                FlatButton(
+                                TextButton(
                                   child: Row(
                                     children: [
                                       Icon(CupertinoIcons.xmark),
@@ -256,7 +256,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                   ),
                                   onPressed: () => Navigator.pop(context),
                                 ),
-                                FlatButton(
+                                TextButton(
                                   child: Row(
                                     children: [
                                       Icon(CupertinoIcons.paperclip),
@@ -269,7 +269,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                         .toUploadFile(widget.chatRoomId);
                                   },
                                 ),
-                                FlatButton(
+                                TextButton(
                                   child: Row(
                                     children: [
                                       Icon(CupertinoIcons.photo),
@@ -324,7 +324,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
                         }
                       },
                       onLongPress: () {
-                        Vibration.vibrate(duration: 10,);
+                        Vibration.vibrate(
+                          duration: 10,
+                        );
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -332,7 +334,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                               title: Text("파일/사진 공유"),
                               content: Text("파일, 사진 중 어떤 것을 공유할까요?"),
                               actions: [
-                                FlatButton(
+                                TextButton(
                                   child: Row(
                                     children: [
                                       Icon(CupertinoIcons.xmark),
@@ -341,7 +343,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                   ),
                                   onPressed: () => Navigator.pop(context),
                                 ),
-                                FlatButton(
+                                TextButton(
                                   child: Row(
                                     children: [
                                       Icon(CupertinoIcons.paperclip),
@@ -354,7 +356,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                         .toUploadFile(widget.chatRoomId);
                                   },
                                 ),
-                                FlatButton(
+                                TextButton(
                                   child: Row(
                                     children: [
                                       Icon(CupertinoIcons.photo),
@@ -445,13 +447,13 @@ class MessageTile extends StatelessWidget {
       case "file":
         return GestureDetector(
           onTap: () {
-            Scaffold.of(context)
+            ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text("다운로드 중..")));
             StorageMethods()
                 .toDownloadFile(this.message, this.download_Url, chatRoomId)
                 .then((value) {
               String retnSum = value;
-              Scaffold.of(context).showSnackBar(SnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text(retnSum != null
                       ? retnSum
                       : "권한 허용이 되지 않아 다운로드 되지 않았습니다!")));
@@ -555,7 +557,7 @@ class MessageTile extends StatelessWidget {
                 .toDownloadFile(this.message, this.download_Url, chatRoomId)
                 .then((value) {
               String retnSum = value;
-              Scaffold.of(context)
+              ScaffoldMessenger.of(context)
                   .showSnackBar(new SnackBar(content: Text(retnSum)));
             });
           },
@@ -684,10 +686,13 @@ class MessageTile extends StatelessWidget {
                     EdgeInsets.only(top: 5, bottom: 5, left: 15, right: 15),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15),
-                          topRight: Radius.circular(15),
-                          bottomLeft: isSendByMe ? Radius.circular(15) : Radius.circular(2),
-                          bottomRight: isSendByMe ? Radius.circular(2) : Radius.circular(15)),
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15),
+                      bottomLeft:
+                          isSendByMe ? Radius.circular(15) : Radius.circular(2),
+                      bottomRight: isSendByMe
+                          ? Radius.circular(2)
+                          : Radius.circular(15)),
                   color: isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
                 ),
                 child: Text(message,

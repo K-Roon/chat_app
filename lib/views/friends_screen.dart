@@ -129,13 +129,13 @@ class _FriendsScreenState extends State<FriendsScreen> {
                       title: new Text("로그아웃"),
                       content: new Text("로그아웃 하시겠어요?\n로그아웃 이후 재로그인이 필요합니다."),
                       actions: <Widget>[
-                        new FlatButton(
+                        new TextButton(
                           child: new Text("취소"),
                           onPressed: () {
                             Navigator.pop(context);
                           },
                         ),
-                        new FlatButton(
+                        new TextButton(
                           child: new Text("여기를 길게 눌러 로그아웃"),
                           onPressed: () {},
                           onLongPress: () {
@@ -169,7 +169,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
                       content: new Text(
                           "현재 버전: ${Constants.appVersion}\n새로운 버전: ${version != null ? version : null}\n${Constants.showDifference}"),
                       actions: <Widget>[
-                        new FlatButton(
+                        new TextButton(
                           child: new Text("확인"),
                           onPressed: () {
                             Navigator.pop(context);
@@ -289,8 +289,8 @@ class FriendsTile extends StatelessWidget {
               ],
             ),
             content: new Text("이 사용자와 무엇을 하시겠어요?"),
-            actions: <Widget> [
-              new FlatButton(
+            actions: <Widget>[
+              new TextButton(
                 child: Column(children: [
                   Icon(Icons.message_rounded),
                   new Text("대화 나누기")
