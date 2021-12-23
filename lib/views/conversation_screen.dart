@@ -223,7 +223,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
               height: MediaQuery.of(context).size.height,
               margin: const EdgeInsets.only(bottom: 65),
               decoration: BoxDecoration(
-                color: Color(0xff1F1F1F),
+                color: Theme.of(context).primaryColorDark,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: ChatMessageList(),
@@ -430,7 +430,7 @@ class MessageTile extends StatelessWidget {
                     EdgeInsets.only(top: 5, bottom: 5, left: 15, right: 15),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Color(0x3AFFFFFF),
+                  color: Color(0x80000000),
                 ),
                 child: Text(message,
                     textAlign: TextAlign.center,
@@ -543,7 +543,9 @@ class MessageTile extends StatelessWidget {
                       : EdgeInsets.only(right: 20),
                   child: Text(time,
                       textAlign: isSendByMe ? TextAlign.right : TextAlign.left,
-                      style: TextStyle(color: Colors.white30)),
+                      style: TextStyle(
+                        color: isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
+                      )),
                 )
               ],
             ),
@@ -629,9 +631,11 @@ class MessageTile extends StatelessWidget {
                   margin: isSendByMe
                       ? EdgeInsets.only(left: 20)
                       : EdgeInsets.only(right: 20),
-                  child: Text(time,
+                  child:Text(time,
                       textAlign: isSendByMe ? TextAlign.right : TextAlign.left,
-                      style: TextStyle(color: Colors.white30)),
+                      style: TextStyle(
+                        color: isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
+                      )),
                 )
               ],
             ),
@@ -693,7 +697,7 @@ class MessageTile extends StatelessWidget {
                       bottomRight: isSendByMe
                           ? Radius.circular(2)
                           : Radius.circular(15)),
-                  color: isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
+                  color: isSendByMe ? Color(0xff007EF4) : Color(0x80000000),
                 ),
                 child: Text(message,
                     textAlign: TextAlign.start,
@@ -708,7 +712,9 @@ class MessageTile extends StatelessWidget {
                     : EdgeInsets.only(right: 20),
                 child: Text(time,
                     textAlign: isSendByMe ? TextAlign.right : TextAlign.left,
-                    style: TextStyle(color: Colors.white30)),
+                    style: TextStyle(
+                      color: isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
+                    )),
               )
             ],
           ),

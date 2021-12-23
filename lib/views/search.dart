@@ -97,6 +97,11 @@ class _SearchState extends State<Search> {
               if (userId != Constants.myId) {
                 addFriend(
                     userName: userName, userId: userId, hasConvRoom: false);
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("친구가 추가되었습니다. 채팅을 즐겨보세요.")));
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("나 자신은 인생의 영원한 친구입니다.")));
               }
             },
             child: Container(

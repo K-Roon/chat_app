@@ -187,12 +187,13 @@ class _SignInState extends State<SignIn> {
           : Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
+                /*
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [const Color(0x002F2F2F), const Color(0xff2F2F2F)],
                   stops: [0.05, 0.5],
-                ),
+                ),*/
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
@@ -211,8 +212,8 @@ class _SignInState extends State<SignIn> {
                                 : "올바른 이메일을 입력해주세요.";
                           },
                           controller: emailTextEditingController,
-                          style: simpleTextStyle(),
-                          decoration: textFieldInputDecoration("이메일"),
+                          style: simpleTextStyle(context),
+                          decoration: textFieldInputDecoration(context, "이메일"),
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
                         ),
@@ -225,10 +226,10 @@ class _SignInState extends State<SignIn> {
                               return null;
                             }
                           },
-                          style: simpleTextStyle(),
+                          style: simpleTextStyle(context),
                           controller: passwordTextEditingController,
                           textInputAction: TextInputAction.go,
-                          decoration: textFieldInputDecoration("비밀번호"),
+                          decoration: textFieldInputDecoration(context, "비밀번호"),
                           onEditingComplete: (() {
                             signIn();
                           }),
@@ -251,7 +252,7 @@ class _SignInState extends State<SignIn> {
                                 horizontal: 16, vertical: 8),
                             child: Text(
                               "비밀번호를 잊으셨나요?",
-                              style: simpleTextStyle(),
+                              style: simpleTextStyle(context),
                             )),
                       )
                     ],
@@ -315,7 +316,7 @@ class _SignInState extends State<SignIn> {
                     children: [
                       Text(
                         "계정이 없으신가요? ",
-                        style: simpleTextStyle(),
+                        style: simpleTextStyle(context),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -324,7 +325,7 @@ class _SignInState extends State<SignIn> {
                         child: Text(
                           "가입하세요",
                           style: TextStyle(
-                              color: Colors.white,
+                              color: Theme.of(context).backgroundColor,
                               fontSize: 16,
                               decoration: TextDecoration.underline),
                         ),

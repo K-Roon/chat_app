@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 
 Widget appBarMain(BuildContext context) {
   return AppBar(
@@ -8,26 +9,27 @@ Widget appBarMain(BuildContext context) {
   );
 }
 
-Widget appBarCustom(BuildContext context, String text, bool iscenterTitle){
+Widget appBarCustom(BuildContext context, String text, bool isCenterTitle){
   return AppBar(
     title: Text(text),
     elevation: 0.0,
-    centerTitle: iscenterTitle,
+    centerTitle: isCenterTitle,
+    backgroundColor: Theme.of(context).primaryColor,
   );
 }
 
-InputDecoration textFieldInputDecoration(String hintText) {
+InputDecoration textFieldInputDecoration(BuildContext context, String hintText) {
   return InputDecoration(
       hintText: hintText,
-      hintStyle: TextStyle(color: Colors.white54,),
+      hintStyle: Theme.of(context).textTheme.bodyText1,
       focusedBorder:
-          UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+          UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).backgroundColor)),
       enabledBorder:
-          UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)));
+          UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).backgroundColor)));
 }
 
-TextStyle simpleTextStyle() {
-  return TextStyle(color: Colors.white, fontSize: 16);
+TextStyle simpleTextStyle(BuildContext context) {
+  return TextStyle(color: Theme.of(context).backgroundColor, fontSize: 16);
 }
 
 TextStyle biggerTextStyle() {

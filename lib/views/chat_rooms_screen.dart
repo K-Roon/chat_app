@@ -80,8 +80,9 @@ class _ChatRoomState extends State<ChatRoom> {
         actions: [],
       ),
       body: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
-          color: ThemeData.dark().primaryColorDark,
+          color: Theme.of(context).primaryColorDark,
           borderRadius: BorderRadius.circular(15),
         ),
         child: chatRoomsList(),
@@ -106,7 +107,10 @@ class _ChatRoomState extends State<ChatRoom> {
             IconButton(
               tooltip: '친구 목록',
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.person_2),
+              icon: Icon(
+                CupertinoIcons.person_2,
+                color: Theme.of(context).backgroundColor,
+              ),
               onPressed: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => FriendsScreen()));
@@ -115,7 +119,7 @@ class _ChatRoomState extends State<ChatRoom> {
 
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.escape),
+              icon: Icon(CupertinoIcons.escape, color: Theme.of(context).backgroundColor,),
               tooltip: "로그아웃",
               onPressed: () {
                 showDialog(
@@ -156,7 +160,7 @@ class _ChatRoomState extends State<ChatRoom> {
             //버전 비교
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.info_circle),
+              icon: Icon(CupertinoIcons.info_circle, color: Theme.of(context).backgroundColor,),
               tooltip: "앱 정보",
               onPressed: () {
                 showDialog(
@@ -203,18 +207,18 @@ class ChatRoomsTile extends StatelessWidget {
                 builder: (context) => ConversationScreen(this.chatRoomId)));
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Row(
           children: [
             Container(
-              height: 40,
-              width: 40,
+              height: 45,
+              width: 45,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(40)),
+                  color: Colors.blue, borderRadius: BorderRadius.circular(45)),
               child: Text(
                 "${chatName.substring(0, 1).toUpperCase()}",
-                style: mediumTextStyle(),
+                style: biggerTextStyle(),
               ),
             ),
             SizedBox(
@@ -223,7 +227,7 @@ class ChatRoomsTile extends StatelessWidget {
             Container(
               child: Text(
                 chatName,
-                style: TextStyle(color: Colors.white, fontSize: 20),
+                style: TextStyle(color:Theme.of(context).backgroundColor, fontSize: 20),
               ),
             ),
           ],
