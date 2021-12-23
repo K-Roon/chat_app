@@ -80,6 +80,7 @@ class _SignUpState extends State<SignUp> {
             )
           : Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
+              /*
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
@@ -87,7 +88,9 @@ class _SignUpState extends State<SignUp> {
                     colors: [const Color(0x002F2F2F), const Color(0xff2F2F2F)],
                     stops: [0.05, 0.5],
                   ),
+
                   borderRadius: BorderRadius.circular(15)),
+               */
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -96,7 +99,7 @@ class _SignUpState extends State<SignUp> {
                     child: Column(
                       children: [
                         TextFormField(
-                          style: simpleTextStyle(),
+                          style: simpleTextStyle(context),
                           controller: usernameEditingController,
                           keyboardType: TextInputType.name,
                           textInputAction: TextInputAction.next,
@@ -105,11 +108,11 @@ class _SignUpState extends State<SignUp> {
                                 ? "1자 이상의 이름을 입력해주세요."
                                 : null;
                           },
-                          decoration: textFieldInputDecoration("사용자 이름"),
+                          decoration: textFieldInputDecoration(context, "사용자 이름"),
                         ),
                         TextFormField(
                           controller: emailEditingController,
-                          style: simpleTextStyle(),
+                          style: simpleTextStyle(context),
                           validator: (val) {
                             return RegExp(
                                         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -117,14 +120,14 @@ class _SignUpState extends State<SignUp> {
                                 ? null
                                 : "이메일이 올바르지 않습니다. 올바른 이메일을 입력해 주세요.";
                           },
-                          decoration: textFieldInputDecoration("이메일"),
+                          decoration: textFieldInputDecoration(context, "이메일"),
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
                         ),
                         TextFormField(
                           obscureText: true,
-                          style: simpleTextStyle(),
-                          decoration: textFieldInputDecoration("비밀번호"),
+                          style: simpleTextStyle(context),
+                          decoration: textFieldInputDecoration(context, "비밀번호"),
                           controller: passwordEditingController,
                           onEditingComplete: (() {signMeUp();}),
                           validator: (val) {
@@ -195,7 +198,7 @@ class _SignUpState extends State<SignUp> {
                     children: [
                       Text(
                         "이미 계정이 있으신가요? ",
-                        style: simpleTextStyle(),
+                        style: simpleTextStyle(context),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -204,7 +207,7 @@ class _SignUpState extends State<SignUp> {
                         child: Text(
                           "로그인하세요",
                           style: TextStyle(
-                              color: Colors.white,
+                              color: Theme.of(context).backgroundColor,
                               fontSize: 16,
                               decoration: TextDecoration.underline),
                         ),
