@@ -82,8 +82,10 @@ class _FriendsScreenState extends State<FriendsScreen> {
         elevation: 0,
       ),
       body: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
-          color: ThemeData.dark().primaryColorDark,
+
+          color: Theme.of(context).primaryColorDark,
           borderRadius: BorderRadius.circular(15),
         ),
         child: friendsList(),
@@ -108,7 +110,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
             IconButton(
               tooltip: '채팅 목록',
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.chat_bubble_text),
+              icon: Icon(CupertinoIcons.chat_bubble_text, color: Theme.of(context).backgroundColor,),
               onPressed: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => ChatRoom()));
@@ -118,7 +120,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
             //로그아웃
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.escape),
+              icon: Icon(CupertinoIcons.escape, color: Theme.of(context).backgroundColor,),
               tooltip: "로그아웃",
               onPressed: () {
                 showDialog(
@@ -157,7 +159,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
             ),
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.info_circle),
+              icon: Icon(CupertinoIcons.info_circle, color: Theme.of(context).backgroundColor,),
               tooltip: "앱 정보 및 업데이트 확인",
               onPressed: () {
                 showDialog(
@@ -205,18 +207,18 @@ class FriendsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Row(
         children: [
           Container(
-            height: 40,
-            width: 40,
+            height: 45,
+            width: 45,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                color: Colors.blue, borderRadius: BorderRadius.circular(40)),
+                color: Colors.blue, borderRadius: BorderRadius.circular(45)),
             child: Text(
               "${friendName.substring(0, 1).toUpperCase()}",
-              style: mediumTextStyle(),
+              style: biggerTextStyle(),
             ),
           ),
           SizedBox(
@@ -225,13 +227,13 @@ class FriendsTile extends StatelessWidget {
           Container(
             child: Text(
               friendName,
-              style: TextStyle(color: Colors.white, fontSize: 20),
+              style: TextStyle(color: Theme.of(context).backgroundColor, fontSize: 20),
             ),
           ),
           Spacer(),
           IconButton(
             icon: Icon(Icons.more_horiz),
-            color: Colors.white,
+            color: Theme.of(context).backgroundColor,
             tooltip: "$friendName 님의 상세 정보",
             onPressed: () {
               listPushed(context);
