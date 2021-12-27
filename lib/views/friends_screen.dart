@@ -84,7 +84,6 @@ class _FriendsScreenState extends State<FriendsScreen> {
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
-
           color: Theme.of(context).primaryColorDark,
           borderRadius: BorderRadius.circular(15),
         ),
@@ -110,7 +109,10 @@ class _FriendsScreenState extends State<FriendsScreen> {
             IconButton(
               tooltip: '채팅 목록',
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.chat_bubble_text, color: Theme.of(context).backgroundColor,),
+              icon: Icon(
+                CupertinoIcons.chat_bubble_text,
+                color: Theme.of(context).backgroundColor,
+              ),
               onPressed: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => ChatRoom()));
@@ -120,7 +122,10 @@ class _FriendsScreenState extends State<FriendsScreen> {
             //로그아웃
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.escape, color: Theme.of(context).backgroundColor,),
+              icon: Icon(
+                CupertinoIcons.escape,
+                color: Theme.of(context).backgroundColor,
+              ),
               tooltip: "로그아웃",
               onPressed: () {
                 showDialog(
@@ -159,7 +164,10 @@ class _FriendsScreenState extends State<FriendsScreen> {
             ),
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.info_circle, color: Theme.of(context).backgroundColor,),
+              icon: Icon(
+                CupertinoIcons.info_circle,
+                color: Theme.of(context).backgroundColor,
+              ),
               tooltip: "앱 정보 및 업데이트 확인",
               onPressed: () {
                 showDialog(
@@ -227,7 +235,8 @@ class FriendsTile extends StatelessWidget {
           Container(
             child: Text(
               friendName,
-              style: TextStyle(color: Theme.of(context).backgroundColor, fontSize: 20),
+              style: TextStyle(
+                  color: Theme.of(context).backgroundColor, fontSize: 20),
             ),
           ),
           Spacer(),
