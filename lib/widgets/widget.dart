@@ -57,6 +57,10 @@ SizedBox spaceW8() {
   return SizedBox(width: 8.0);
 }
 
+SizedBox spaceH3() {
+  return SizedBox(height: 3.0);
+}
+
 SizedBox spaceH16() {
   return SizedBox(height: 16.0);
 }
