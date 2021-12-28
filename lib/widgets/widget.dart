@@ -43,3 +43,11 @@ TextStyle mediumTextStyle() {
 TextStyle smallTextStyle() {
   return TextStyle(color: Colors.white, fontSize: 10);
 }
+
+SizedBox spaceW(double width) {
+  return SizedBox(width: width);
+}
+
+SizedBox spaceH(double height) {
+  return SizedBox(height: height);
+}
