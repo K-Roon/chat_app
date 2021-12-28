@@ -302,10 +302,7 @@ class FriendsTile extends StatelessWidget {
             content: new Text("이 사용자와 무엇을 하시겠어요?"),
             actions: <Widget>[
               new TextButton(
-                child: Column(children: [
-                  Icon(Icons.message_rounded),
-                  new Text("대화 나누기")
-                ]),
+                child: Text("대화 나누기"),
                 onPressed: () {
                   pushConv(friendId, context);
                 },
