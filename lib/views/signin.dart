@@ -257,9 +257,7 @@ class _SignInState extends State<SignIn> {
                       )
                     ],
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
+                  spaceH16(),
                   GestureDetector(
                     onTap: () {
                       signIn();
@@ -282,9 +280,7 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
+                  spaceH16(),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 16),
                     decoration: BoxDecoration(
@@ -308,9 +304,7 @@ class _SignInState extends State<SignIn> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
+                  spaceH16(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -332,9 +326,7 @@ class _SignInState extends State<SignIn> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 16,
-                  )
+                  spaceH16()
                 ],
               ),
             ),
