@@ -146,9 +146,7 @@ class FriendsPlusTile extends StatelessWidget {
               style: mediumTextStyle(),
             ),
           ),
-          SizedBox(
-            width: 8,
-          ),
+          spaceW8(),
           Container(
             child: Text(
               friendName,
