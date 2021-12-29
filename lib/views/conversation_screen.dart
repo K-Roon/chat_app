@@ -500,7 +500,7 @@ class MessageTile extends StatelessWidget {
                           ),
                         ],
                       ),
-                isSendByMe ? Container() : SizedBox(height: 3),
+                isSendByMe ? Container() : spaceH3(),
                 Container(
                   margin: isSendByMe
                       ? EdgeInsets.only(left: 20)
@@ -544,7 +544,8 @@ class MessageTile extends StatelessWidget {
                   child: Text(time,
                       textAlign: isSendByMe ? TextAlign.right : TextAlign.left,
                       style: TextStyle(
-                        color: isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
+                        color:
+                            isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
                       )),
                 )
               ],
@@ -604,7 +605,7 @@ class MessageTile extends StatelessWidget {
                           ),
                         ],
                       ),
-                isSendByMe ? Container() : SizedBox(height: 3),
+                isSendByMe ? Container() : spaceH3(),
                 Container(
                   margin: isSendByMe
                       ? EdgeInsets.only(left: 20)
@@ -631,10 +632,11 @@ class MessageTile extends StatelessWidget {
                   margin: isSendByMe
                       ? EdgeInsets.only(left: 20)
                       : EdgeInsets.only(right: 20),
-                  child:Text(time,
+                  child: Text(time,
                       textAlign: isSendByMe ? TextAlign.right : TextAlign.left,
                       style: TextStyle(
-                        color: isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
+                        color:
+                            isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
                       )),
                 )
               ],
@@ -681,7 +683,7 @@ class MessageTile extends StatelessWidget {
                         ),
                       ],
                     ),
-              isSendByMe ? Container() : SizedBox(height: 3),
+              isSendByMe ? Container() : spaceH3(),
               Container(
                 margin: isSendByMe
                     ? EdgeInsets.only(left: 20)
