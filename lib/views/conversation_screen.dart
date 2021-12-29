@@ -488,9 +488,7 @@ class MessageTile extends StatelessWidget {
                               style: mediumTextStyle(),
                             ),
                           ),
-                          SizedBox(
-                            width: 8,
-                          ),
+                          spaceW8(),
                           Container(
                             child: Text(
                               sendBy,
@@ -593,9 +591,7 @@ class MessageTile extends StatelessWidget {
                               style: mediumTextStyle(),
                             ),
                           ),
-                          SizedBox(
-                            width: 8,
-                          ),
+                          spaceW8(),
                           Container(
                             child: Text(
                               sendBy,
@@ -672,9 +668,7 @@ class MessageTile extends StatelessWidget {
                             style: mediumTextStyle(),
                           ),
                         ),
-                        SizedBox(
-                          width: 8,
-                        ),
+                        spaceW8(),
                         Container(
                           child: Text(
                             sendBy,
