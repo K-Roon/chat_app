@@ -74,7 +74,7 @@ class _ChatRoomState extends State<ChatRoom> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "${Constants.myName.toString()}의 채팅 목록",
+          "채팅",
         ),
         elevation: 0,
         actions: [],
@@ -105,7 +105,7 @@ class _ChatRoomState extends State<ChatRoom> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             IconButton(
-              tooltip: '친구 목록',
+              tooltip: '친구',
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               icon: Icon(
                 CupertinoIcons.person_2,
