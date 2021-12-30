@@ -295,7 +295,7 @@ class FriendsTile extends StatelessWidget {
                 )
               ],
             ),
-            content: new Text("이 사용자와 무엇을 하시겠어요?"),
+            content: new Text("이 사용자와 대화를 나눌까요?"),
             actions: <Widget>[
               new TextButton(
                 child: Text("대화 나누기"),
