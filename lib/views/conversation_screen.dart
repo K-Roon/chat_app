@@ -180,7 +180,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                   return AlertDialog(
                     title: Text("채팅방 나가기"),
                     content: Text(
-                      "채팅방을 나가시겠어요?\n다른 멤버가 다시 초대할 때 까지 채팅에 참여하실 수 없으며 일부 버전에서는 로그아웃이 진행될 수 있어요.",
+                      "채팅방을 나가시겠어요?\n다른 멤버가 다시 초대할 때 까지 채팅에 참가할 수 없습니다.",
                       style: TextStyle(color: Colors.black),
                     ),
                     actions: [
