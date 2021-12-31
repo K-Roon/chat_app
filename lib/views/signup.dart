@@ -108,7 +108,8 @@ class _SignUpState extends State<SignUp> {
                                 ? "1자 이상의 이름을 입력해주세요."
                                 : null;
                           },
-                          decoration: textFieldInputDecoration(context, "사용자 이름"),
+                          decoration:
+                              textFieldInputDecoration(context, "사용자 이름"),
                         ),
                         TextFormField(
                           controller: emailEditingController,
@@ -129,7 +130,9 @@ class _SignUpState extends State<SignUp> {
                           style: simpleTextStyle(context),
                           decoration: textFieldInputDecoration(context, "비밀번호"),
                           controller: passwordEditingController,
-                          onEditingComplete: (() {signMeUp();}),
+                          onEditingComplete: (() {
+                            signMeUp();
+                          }),
                           validator: (val) {
                             return val.length >= 6
                                 ? null
@@ -207,7 +210,8 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                     ],
-                  ),spaceH16()
+                  ),
+                  spaceH16()
                 ],
               ),
             ),
