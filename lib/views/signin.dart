@@ -59,23 +59,10 @@ class _SignInState extends State<SignIn> {
             isLoading = false;
           });
 
-          ///오류 발생시 알려줌.
-          showDialog(
+          loginErrorDialog(
               context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: new Text("아이디/비밀번호 오류"),
-                  content: new Text("이메일 혹은 비밀번호가 달라요.\n다시 확인해보세요."),
-                  actions: <Widget>[
-                    new TextButton(
-                      child: new Text("확인"),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    )
-                  ],
-                );
-              });
+              titleText: "아이디/비밀번호 오류",
+              contentText: "이메일 혹은 비밀번호가 달라요.\n다시 확인해보세요.");
 
           /// 계정 사용 정지시.
         } else if (result.contains("user-disabled")) {
