@@ -48,6 +48,7 @@ class AuthService {
     }
   }
 
+  /// 비밀번호 수정
   Future resetPass(String email) async {
     try {
       return await _auth.sendPasswordResetEmail(email: email);
