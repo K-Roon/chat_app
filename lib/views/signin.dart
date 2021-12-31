@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:chat_app/helper/helperfunctions.dart';
-import 'package:chat_app/helper/theme.dart';
+import 'package:chat_app/widgets/theme.dart';
 import 'package:chat_app/services/auth.dart';
 import 'package:chat_app/services/database.dart';
 import 'package:chat_app/views/chat_rooms_screen.dart';
