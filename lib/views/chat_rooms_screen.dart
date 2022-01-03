@@ -119,7 +119,10 @@ class _ChatRoomState extends State<ChatRoom> {
 
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.escape, color: Theme.of(context).backgroundColor,),
+              icon: Icon(
+                CupertinoIcons.escape,
+                color: Theme.of(context).backgroundColor,
+              ),
               tooltip: "로그아웃",
               onPressed: () {
                 showDialog(
@@ -160,7 +163,10 @@ class _ChatRoomState extends State<ChatRoom> {
             //버전 비교
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.info_circle, color: Theme.of(context).backgroundColor,),
+              icon: Icon(
+                CupertinoIcons.info_circle,
+                color: Theme.of(context).backgroundColor,
+              ),
               tooltip: "앱 정보",
               onPressed: () {
                 showDialog(
@@ -225,7 +231,8 @@ class ChatRoomsTile extends StatelessWidget {
             Container(
               child: Text(
                 chatName,
-                style: TextStyle(color:Theme.of(context).backgroundColor, fontSize: 20),
+                style: TextStyle(
+                    color: Theme.of(context).backgroundColor, fontSize: 20),
               ),
             ),
           ],
