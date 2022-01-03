@@ -22,7 +22,7 @@ final themeData = ThemeData(
       titleTextStyle: TextStyle(color: Colors.black, fontSize: 20)),
   colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Color(0xff0076FF)),
   bottomAppBarTheme:
-  BottomAppBarTheme(color: Color(0xFFEEEEEE), elevation: 2.0),
+      BottomAppBarTheme(color: Color(0xFFEEEEEE), elevation: 2.0),
   textTheme: const TextTheme(
     headline6: TextStyle(
         color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
@@ -31,6 +31,7 @@ final themeData = ThemeData(
     overline: TextStyle(color: Colors.black54, fontSize: 9),
   ),
 );
+
 final darkThemeData = ThemeData(
   primaryColor: Color(0xff2F2F2F),
   primaryColorLight: Color(0xff5F5F5F),
@@ -48,7 +49,7 @@ final darkThemeData = ThemeData(
       elevation: 0.0,
       titleTextStyle: TextStyle(color: Colors.white, fontSize: 20)),
   bottomAppBarTheme:
-  BottomAppBarTheme(color: Color(0xFF3F3F3F), elevation: 2.0),
+      BottomAppBarTheme(color: Color(0xFF3F3F3F), elevation: 2.0),
   dialogTheme: DialogTheme(
     backgroundColor: Color(0xff2F2F2F),
     contentTextStyle: TextStyle(color: Colors.white, fontSize: 14),
