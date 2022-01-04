@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 loginErrorDialog({context, String titleText, String contentText}) {
   ///오류 발생시 알려줌.
   return showDialog(
@@ -17,3 +19,4 @@ loginErrorDialog({context, String titleText, String contentText}) {
         );
       });
 }
+
