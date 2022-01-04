@@ -20,3 +20,14 @@ loginErrorDialog({context, String titleText, String contentText}) {
       });
 }
 
+flexibleDialog({context, String titleText, content, actions}) {
+  return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: new Text(titleText),
+          content: content,
+          actions: actions,
+        );
+      });
+}

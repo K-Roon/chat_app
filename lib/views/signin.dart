@@ -88,7 +88,7 @@ class _SignInState extends State<SignIn> {
               titleText: "사용자를 찾을 수 없음(혹은 탈퇴한 계정)",
               contentText: "사용자를 찾을 수 없습니다.\n혹시 계정을 탈퇴하셨나요?");
 
-          ///아이디/비밀번호를 자꾸 틀리며 로그인 요청을 많이 한 경우 (메크로를 돌려서 비밀번호 해킹을 시도한 경우)
+          ///아이디 및 비밀번호를 자꾸 틀리며 로그인 요청을 많이 한 경우 (메크로를 돌려서 비밀번호 해킹을 시도한 경우)
         } else if (result.contains("too-many-requests")) {
           setState(() {
             isLoading = false;
