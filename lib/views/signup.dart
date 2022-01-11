@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:chat_app/views/chat_rooms_screen.dart';
 import 'package:chat_app/widgets/widget.dart';
 import 'package:chat_app/helper/helperfunctions.dart';
-import 'package:chat_app/helper/theme.dart';
+import 'package:chat_app/widgets/theme.dart';
 import 'package:chat_app/services/auth.dart';
 import 'package:chat_app/services/database.dart';
 import 'package:flutter/material.dart';
@@ -108,7 +108,8 @@ class _SignUpState extends State<SignUp> {
                                 ? "1자 이상의 이름을 입력해주세요."
                                 : null;
                           },
-                          decoration: textFieldInputDecoration(context, "사용자 이름"),
+                          decoration:
+                              textFieldInputDecoration(context, "사용자 이름"),
                         ),
                         TextFormField(
                           controller: emailEditingController,
@@ -129,7 +130,9 @@ class _SignUpState extends State<SignUp> {
                           style: simpleTextStyle(context),
                           decoration: textFieldInputDecoration(context, "비밀번호"),
                           controller: passwordEditingController,
-                          onEditingComplete: (() {signMeUp();}),
+                          onEditingComplete: (() {
+                            signMeUp();
+                          }),
                           validator: (val) {
                             return val.length >= 6
                                 ? null
@@ -139,9 +142,7 @@ class _SignUpState extends State<SignUp> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
+                  spaceH16(),
                   GestureDetector(
                     onTap: () {
                       signMeUp();
@@ -164,9 +165,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
+                  spaceH16(),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 16),
                     decoration: BoxDecoration(
@@ -190,9 +189,7 @@ class _SignUpState extends State<SignUp> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
+                  spaceH16(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -214,9 +211,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 15,
-                  )
+                  spaceH16()
                 ],
               ),
             ),

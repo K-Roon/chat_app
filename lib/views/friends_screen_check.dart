@@ -33,10 +33,9 @@ class _FriendsCheckScreenState extends State<FriendsCheckScreen> {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return FriendsPlusTile(
-                      snapshot.data.docs[index].data()['friendName']
-                          .toString(),
-                      snapshot.data.docs[index].data()['friendId'],
-                      widget.roomId.toString(),
+                    snapshot.data.docs[index].data()['friendName'].toString(),
+                    snapshot.data.docs[index].data()['friendId'],
+                    widget.roomId.toString(),
                     widget.chatName.toString(),
                     snapshot.data.docs[index].data()['isOneVone'],
                   );
@@ -109,7 +108,8 @@ class _FriendsCheckScreenState extends State<FriendsCheckScreen> {
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               icon: Icon(CupertinoIcons.search),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Search()));
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Search()));
               },
             ),
           ],
@@ -126,8 +126,8 @@ class FriendsPlusTile extends StatelessWidget {
   final String chatName;
   final bool isOneVone;
 
-  FriendsPlusTile(this.friendName, this.friendId, this.roomId, this.chatName, this.isOneVone);
-
+  FriendsPlusTile(this.friendName, this.friendId, this.roomId, this.chatName,
+      this.isOneVone);
 
   @override
   Widget build(BuildContext context) {
@@ -146,9 +146,7 @@ class FriendsPlusTile extends StatelessWidget {
               style: mediumTextStyle(),
             ),
           ),
-          SizedBox(
-            width: 8,
-          ),
+          spaceW8(),
           Container(
             child: Text(
               friendName,
@@ -158,7 +156,8 @@ class FriendsPlusTile extends StatelessWidget {
           Spacer(),
           GestureDetector(
             onTap: () {
-              ChatMethods().addMember(roomId, friendId, friendName, chatName, isOneVone);
+              ChatMethods()
+                  .addMember(roomId, friendId, friendName, chatName, isOneVone);
             },
             child: Container(
               decoration: BoxDecoration(

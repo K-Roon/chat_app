@@ -2,7 +2,6 @@ import 'package:chat_app/helper/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DatabaseMethods {
-
   ///새로운 사용자 파이어베이스에 저장
   uploadUserInfo(String userId, userMap) {
     FirebaseFirestore.instance
@@ -40,7 +39,6 @@ class DatabaseMethods {
         .snapshots();
   }
 
-
   ///사용자가 초대되어있는 대화방 모두 불러오기
   getChatRooms(String userId) async {
     return await FirebaseFirestore.instance
@@ -58,6 +56,4 @@ class DatabaseMethods {
         .doc(userId)
         .set(friendMap);
   }
-  
-
 }

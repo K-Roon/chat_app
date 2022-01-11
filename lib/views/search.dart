@@ -10,8 +10,6 @@ class Search extends StatefulWidget {
   _SearchState createState() => _SearchState();
 }
 
-String myName;
-
 class _SearchState extends State<Search> {
   DatabaseMethods databaseMethods = new DatabaseMethods();
   TextEditingController searchTextEditingController =

@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:chat_app/services/chat_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
-import 'package:path/path.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:open_file/open_file.dart';

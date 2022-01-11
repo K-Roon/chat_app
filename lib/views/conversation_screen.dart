@@ -102,13 +102,13 @@ class _ConversationScreenState extends State<ConversationScreen> {
         actions: [
           IconButton(
             icon: Icon(CupertinoIcons.pencil),
-            tooltip: "채팅방에 새로운 이름 주기",
+            tooltip: "채팅방 이름 바꾸기",
             onPressed: () {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text("채팅방에 새로운 이름 주기"),
+                    title: Text("채팅방 이름 바꾸기"),
                     content: TextField(
                       controller: chatNameTextEditingController,
                       style: TextStyle(color: Colors.black),
@@ -134,9 +134,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: Text("채팅방에 새로운 이름 주기"),
+                                title: Text("채팅방 이름 바꾸기"),
                                 content: Text(
-                                  "채팅방 제목을 새로운 이름으로 변경할 경우 초대되어 있는 사용자 전체에게 이 제목이 적용되요.\n새로운 채팅방 이름을 지정할 때에는 초대되어있는 사용자 모두를 만족할 수 있는 제목으로 지정해주세요.\n채팅방에게 새로운 이름을 부여함으로써 일어난 일에 대한 책임은 본인에게 있습니다.",
+                                  "채팅방 이름을 새롭게 변경하면 참가자 전체의 채팅방 이름이 바뀌게 됩니다.\n되도록 참가자 모두를 만족할 수 있는 이름으로 지정하세요.\n채팅방 이름을 변경함으로써 일어난 일에 대한 책임은 본인에게 있습니다.",
                                   style: TextStyle(color: Colors.black),
                                 ),
                                 actions: [
@@ -180,7 +180,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                   return AlertDialog(
                     title: Text("채팅방 나가기"),
                     content: Text(
-                      "채팅방을 나가시겠어요?\n다른 멤버가 다시 초대할 때 까지 채팅에 참여하실 수 없으며 일부 버전에서는 로그아웃이 진행될 수 있어요.",
+                      "채팅방을 나가시겠어요?\n다른 멤버가 다시 초대할 때 까지 채팅에 참가할 수 없습니다.",
                       style: TextStyle(color: Colors.black),
                     ),
                     actions: [
@@ -488,9 +488,7 @@ class MessageTile extends StatelessWidget {
                               style: mediumTextStyle(),
                             ),
                           ),
-                          SizedBox(
-                            width: 8,
-                          ),
+                          spaceW8(),
                           Container(
                             child: Text(
                               sendBy,
@@ -500,7 +498,7 @@ class MessageTile extends StatelessWidget {
                           ),
                         ],
                       ),
-                isSendByMe ? Container() : SizedBox(height: 3),
+                isSendByMe ? Container() : spaceH3(),
                 Container(
                   margin: isSendByMe
                       ? EdgeInsets.only(left: 20)
@@ -544,7 +542,8 @@ class MessageTile extends StatelessWidget {
                   child: Text(time,
                       textAlign: isSendByMe ? TextAlign.right : TextAlign.left,
                       style: TextStyle(
-                        color: isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
+                        color:
+                            isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
                       )),
                 )
               ],
@@ -592,9 +591,7 @@ class MessageTile extends StatelessWidget {
                               style: mediumTextStyle(),
                             ),
                           ),
-                          SizedBox(
-                            width: 8,
-                          ),
+                          spaceW8(),
                           Container(
                             child: Text(
                               sendBy,
@@ -604,7 +601,7 @@ class MessageTile extends StatelessWidget {
                           ),
                         ],
                       ),
-                isSendByMe ? Container() : SizedBox(height: 3),
+                isSendByMe ? Container() : spaceH3(),
                 Container(
                   margin: isSendByMe
                       ? EdgeInsets.only(left: 20)
@@ -631,10 +628,11 @@ class MessageTile extends StatelessWidget {
                   margin: isSendByMe
                       ? EdgeInsets.only(left: 20)
                       : EdgeInsets.only(right: 20),
-                  child:Text(time,
+                  child: Text(time,
                       textAlign: isSendByMe ? TextAlign.right : TextAlign.left,
                       style: TextStyle(
-                        color: isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
+                        color:
+                            isSendByMe ? Color(0xff007EF4) : Color(0x1AFFFFFF),
                       )),
                 )
               ],
@@ -670,9 +668,7 @@ class MessageTile extends StatelessWidget {
                             style: mediumTextStyle(),
                           ),
                         ),
-                        SizedBox(
-                          width: 8,
-                        ),
+                        spaceW8(),
                         Container(
                           child: Text(
                             sendBy,
@@ -681,7 +677,7 @@ class MessageTile extends StatelessWidget {
                         ),
                       ],
                     ),
-              isSendByMe ? Container() : SizedBox(height: 3),
+              isSendByMe ? Container() : spaceH3(),
               Container(
                 margin: isSendByMe
                     ? EdgeInsets.only(left: 20)

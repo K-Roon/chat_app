@@ -16,6 +16,7 @@ class ChatMethods {
         .snapshots();
   }
 
+  /// 채팅방 이름 불러오기
   Future<String> getRoomName(String chatRoomId) async {
     return await FirebaseFirestore.instance
         .collection("ChatRoom")
@@ -36,7 +37,7 @@ class ChatMethods {
     });
     addInfo(chatRoomId,
         "${Constants.myName} 님이 새 채팅방 이름을\n$newChatRoomName (으)로 바꿨습니다.");
-    addInfo(chatRoomId, "ⓘ구 버전은 채팅방을 재진입해야 적용됩니다.");
+    addInfo(chatRoomId, "ⓘ구 버전에서는 채팅방을 다시 진입해주세요.");
   }
 
   ///채팅방 만들기
@@ -126,7 +127,7 @@ class ChatMethods {
           print(e);
         });
         addInfo(
-            chatRoomId, "${Constants.myName} 님이 $friendName 님을 두둥 등장 시켰어요!");
+            chatRoomId, "${Constants.myName} 님이 $friendName 님을 초대했습니다.");
       }
     });
   }

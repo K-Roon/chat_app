@@ -1,7 +1,8 @@
 import 'dart:ui';
 
 import 'package:chat_app/helper/helperfunctions.dart';
-import 'package:chat_app/helper/theme.dart';
+import 'package:chat_app/widgets/dialogs.dart';
+import 'package:chat_app/widgets/theme.dart';
 import 'package:chat_app/services/auth.dart';
 import 'package:chat_app/services/database.dart';
 import 'package:chat_app/views/chat_rooms_screen.dart';
@@ -59,23 +60,10 @@ class _SignInState extends State<SignIn> {
             isLoading = false;
           });
 
-          ///오류 발생시 알려줌.
-          showDialog(
+          loginErrorDialog(
               context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: new Text("아이디/비밀번호 오류"),
-                  content: new Text("이메일 혹은 비밀번호가 달라요.\n다시 확인해보세요."),
-                  actions: <Widget>[
-                    new TextButton(
-                      child: new Text("확인"),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    )
-                  ],
-                );
-              });
+              titleText: "아이디/비밀번호 오류",
+              contentText: "이메일 혹은 비밀번호가 달라요.\n다시 확인해보세요.");
 
           /// 계정 사용 정지시.
         } else if (result.contains("user-disabled")) {
@@ -83,23 +71,11 @@ class _SignInState extends State<SignIn> {
           setState(() {
             isLoading = false;
           });
-          showDialog(
+          loginErrorDialog(
               context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: new Text("계정 정지됨."),
-                  content: new Text(
-                      "Chatting Us 운영원칙을 위반하여 계정 사용이 정지되었습니다.\n관리자에게 문의하세요."),
-                  actions: <Widget>[
-                    new TextButton(
-                      child: new Text("확인"),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    )
-                  ],
-                );
-              });
+              titleText: "계정 사용이 일시 정지되었음.",
+              contentText:
+                  "Chatting Us 운영원칙을 위반하여 계정 사용이 정지되었습니다.\n관리자에게 문의하세요.");
 
           ///사용자를 찾을 수 없음
         } else if (result.contains("user-not-found")) {
@@ -107,69 +83,32 @@ class _SignInState extends State<SignIn> {
           setState(() {
             isLoading = false;
           });
-          showDialog(
+          loginErrorDialog(
               context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: new Text("사용자를 찾을 수 없음(혹은 탈퇴한 계정)"),
-                  content: new Text("사용자를 찾을 수 없습니다.\n혹시 계정을 탈퇴하셨나요?"),
-                  actions: <Widget>[
-                    new TextButton(
-                      child: new Text("확인"),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    )
-                  ],
-                );
-              });
+              titleText: "사용자를 찾을 수 없음(혹은 탈퇴한 계정)",
+              contentText: "사용자를 찾을 수 없습니다.\n혹시 계정을 탈퇴하셨나요?");
 
-          ///아이디/비밀번호를 자꾸 틀리며 로그인 요청을 많이 한 경우 (메크로를 돌려서 비밀번호 해킹을 시도한 경우)
+          ///아이디 및 비밀번호를 자꾸 틀리며 로그인 요청을 많이 한 경우 (메크로를 돌려서 비밀번호 해킹을 시도한 경우)
         } else if (result.contains("too-many-requests")) {
           setState(() {
             isLoading = false;
           });
-          showDialog(
+          loginErrorDialog(
               context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: new Text("[해킹시도감지]\n계정 로그인 정지됨."),
-                  content: new Text("해당 계정에 로그인이 반복적으로 실행되고 있었습니다!\n" +
-                      "저희 Chatting Us 팀은 해당 계정의 해킹 방지를 위해 보호중입니다.\n" +
-                      "몇 분 뒤에 자동으로 정지가 풀리며,\n" +
-                      "당장 해제되길 바라신다면 관리자에게 문의해주세요.\n"),
-                  actions: <Widget>[
-                    new TextButton(
-                      child: new Text("확인"),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    )
-                  ],
-                );
-              });
+              titleText: "계정 사용이 일시 정지되었음. (해킹보호정책)",
+              contentText: "해당 계정으로 수상한 트래픽이 탐지되었습니다. 이는 해킹 시도일 수도 있습니다.\n" +
+                  "저희 Chatting Us 팀은 해당 계정의 해킹 방지를 위해 보호중입니다.\n" +
+                  "몇 분 뒤에 자동으로 정지가 풀립니다. 잠시 기다려주세요.");
 
           /// 다른 알 수 없는 오류
         } else {
           setState(() {
             isLoading = false;
           });
-          showDialog(
+          loginErrorDialog(
               context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: new Text("알 수 없는 오류"),
-                  content: new Text("알 수 없는 오류로 로그인에 실패했습니다.\n다시 시도해보세요."),
-                  actions: <Widget>[
-                    new TextButton(
-                      child: new Text("확인"),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    )
-                  ],
-                );
-              });
+              titleText: "알 수 없는 오류",
+              contentText: "알 수 없는 오류로 로그인에 실패했습니다.\n다시 시도해보세요.");
         }
       });
     }
@@ -257,9 +196,7 @@ class _SignInState extends State<SignIn> {
                       )
                     ],
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
+                  spaceH16(),
                   GestureDetector(
                     onTap: () {
                       signIn();
@@ -282,9 +219,7 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
+                  spaceH16(),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 16),
                     decoration: BoxDecoration(
@@ -308,9 +243,7 @@ class _SignInState extends State<SignIn> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
+                  spaceH16(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -332,9 +265,7 @@ class _SignInState extends State<SignIn> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 15,
-                  )
+                  spaceH16()
                 ],
               ),
             ),

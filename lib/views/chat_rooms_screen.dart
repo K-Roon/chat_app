@@ -74,7 +74,7 @@ class _ChatRoomState extends State<ChatRoom> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "${Constants.myName.toString()}의 채팅 목록",
+          "채팅",
         ),
         elevation: 0,
         actions: [],
@@ -105,7 +105,7 @@ class _ChatRoomState extends State<ChatRoom> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             IconButton(
-              tooltip: '친구 목록',
+              tooltip: '친구',
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               icon: Icon(
                 CupertinoIcons.person_2,
@@ -119,7 +119,10 @@ class _ChatRoomState extends State<ChatRoom> {
 
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.escape, color: Theme.of(context).backgroundColor,),
+              icon: Icon(
+                CupertinoIcons.escape,
+                color: Theme.of(context).backgroundColor,
+              ),
               tooltip: "로그아웃",
               onPressed: () {
                 showDialog(
@@ -160,7 +163,10 @@ class _ChatRoomState extends State<ChatRoom> {
             //버전 비교
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.info_circle, color: Theme.of(context).backgroundColor,),
+              icon: Icon(
+                CupertinoIcons.info_circle,
+                color: Theme.of(context).backgroundColor,
+              ),
               tooltip: "앱 정보",
               onPressed: () {
                 showDialog(
@@ -221,13 +227,12 @@ class ChatRoomsTile extends StatelessWidget {
                 style: biggerTextStyle(),
               ),
             ),
-            SizedBox(
-              width: 8,
-            ),
+            spaceW8(),
             Container(
               child: Text(
                 chatName,
-                style: TextStyle(color:Theme.of(context).backgroundColor, fontSize: 20),
+                style: TextStyle(
+                    color: Theme.of(context).backgroundColor, fontSize: 20),
               ),
             ),
           ],
