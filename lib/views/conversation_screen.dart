@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:chat_app/helper/constants.dart';
 import 'package:chat_app/services/chat_service.dart';
 import 'package:chat_app/services/storage_methods.dart';
@@ -90,6 +92,8 @@ class _ConversationScreenState extends State<ConversationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    int pushSecond = 0;
+    Timer timer;
     _scrollController.animateTo(
       0.0,
       curve: Curves.easeOut,
@@ -316,63 +320,76 @@ class _ConversationScreenState extends State<ConversationScreen> {
                       ),
                     )),
                     GestureDetector(
-                      onTap: () {
+                      onTapDown: (tapDownDetails) {
+                        Vibration.vibrate(pattern: [0, 5]);
+                         timer = Timer.periodic(Duration(milliseconds: 900), (timer) {
+                            setState(() {
+                              pushSecond++;
+                              if (pushSecond >= 2) {
+                                Vibration.vibrate(pattern: [0, 5]);
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text("파일/사진 공유"),
+                                      content: Text("파일, 사진 중 어떤 것을 공유할까요?"),
+                                      actions: [
+                                        TextButton(
+                                          child: Row(
+                                            children: [
+                                              Icon(CupertinoIcons.xmark),
+                                              Text(" 취소"),
+                                            ],
+                                          ),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                        ),
+                                        TextButton(
+                                          child: Row(
+                                            children: [
+                                              Icon(CupertinoIcons.paperclip),
+                                              Text(" 파일"),
+                                            ],
+                                          ),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                            StorageMethods().toUploadFile(
+                                                widget.chatRoomId);
+                                          },
+                                        ),
+                                        TextButton(
+                                          child: Row(
+                                            children: [
+                                              Icon(CupertinoIcons.photo),
+                                              Text(" 사진"),
+                                            ],
+                                          ),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                            StorageMethods().toUploadImage(
+                                                widget.chatRoomId);
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                                timer?.cancel();
+                                pushSecond = 0;
+                              }
+                            });
+                          });
+
+                      },
+                      onTapUp: (tapUpDetails) {
+                        timer?.cancel();
+                        Vibration.vibrate(pattern: [0, 5]);
+
                         if (messageController.text.trimLeft().trimRight() !=
-                            "") {
-                          Vibration.vibrate(pattern: [0, 10, 100, 10]);
+                            "" && pushSecond <= 1) {
                           sendMessage();
                         }
-                      },
-                      onLongPress: () {
-                        Vibration.vibrate(
-                          duration: 10,
-                        );
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: Text("파일/사진 공유"),
-                              content: Text("파일, 사진 중 어떤 것을 공유할까요?"),
-                              actions: [
-                                TextButton(
-                                  child: Row(
-                                    children: [
-                                      Icon(CupertinoIcons.xmark),
-                                      Text(" 취소"),
-                                    ],
-                                  ),
-                                  onPressed: () => Navigator.pop(context),
-                                ),
-                                TextButton(
-                                  child: Row(
-                                    children: [
-                                      Icon(CupertinoIcons.paperclip),
-                                      Text(" 파일"),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    StorageMethods()
-                                        .toUploadFile(widget.chatRoomId);
-                                  },
-                                ),
-                                TextButton(
-                                  child: Row(
-                                    children: [
-                                      Icon(CupertinoIcons.photo),
-                                      Text(" 사진"),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    StorageMethods()
-                                        .toUploadImage(widget.chatRoomId);
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
+                        pushSecond = 0;
                       },
                       child: Container(
                         height: 40,
@@ -383,9 +400,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
                         ),
                         padding: EdgeInsets.all(5),
                         child: Icon(
-                          CupertinoIcons.paperplane_fill,
+                          CupertinoIcons.up_arrow,
                           color: Colors.white,
-                          size: 20,
+                          size: 25,
                         ),
                       ),
                     )

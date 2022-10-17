@@ -32,7 +32,7 @@ apply plugin: 'com.google.gms.google-services'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 33
 
 
     dependencies {
@@ -47,16 +47,16 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.kroon.chat_app"
         minSdkVersion 24
-        targetSdkVersion 29
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
     signingConfigs {
         release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
+            //keyAlias keystoreProperties['keyAlias']
+            //keyPassword keystoreProperties['keyPassword']
+            //storeFile file(keystoreProperties['storeFile'])
+            //storePassword keystoreProperties['storePassword']
         }
     }
     buildTypes {
