@@ -10,7 +10,6 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   ///사용자의 정보가 파이어베이스로부터 존재하는지 묻습니다. 없는 경우 null 값을 반환합니다.
-  // ignore: deprecated_member_use
   ModelsUser _userFromFirebaseUser(User user) {
     return user != null ? ModelsUser(uid: user.uid) : null;
   }
