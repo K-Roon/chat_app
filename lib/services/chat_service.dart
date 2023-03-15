@@ -89,7 +89,7 @@ class ChatMethods {
   }
 
   ///사용자 초대
-  addMember(String chatRoomId, String newFriendId, String friendName,
+  void addMember(String chatRoomId, String newFriendId, String friendName,
       String chatName, bool isOneVone) {
     List<dynamic> inUsers;
     FirebaseFirestore.instance
