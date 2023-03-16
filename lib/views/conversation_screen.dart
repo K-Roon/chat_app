@@ -8,6 +8,8 @@ import 'package:chat_app/widgets/widget.dart';
 import 'package:firebase_image/firebase_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 import 'package:vibration/vibration.dart';
 
 ///conversation : 대화(nown)
@@ -105,7 +107,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
         elevation: 0,
         actions: [
           IconButton(
-            icon: Icon(CupertinoIcons.pencil),
+            icon: Icon(
+              MaterialSymbols.edit,
+              weight: 200,
+            ),
             tooltip: "채팅방 이름 바꾸기",
             onPressed: () {
               showDialog(
@@ -175,7 +180,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
             },
           ),
           IconButton(
-            icon: Icon(CupertinoIcons.escape),
+            icon: Icon(
+              MaterialSymbols.logout,
+              weight: 200,
+            ),
             tooltip: "채팅방 나가기",
             onPressed: () {
               showDialog(
@@ -208,7 +216,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
             },
           ),
           IconButton(
-            icon: Icon(CupertinoIcons.plus),
+            icon: Icon(
+              MaterialSymbols.person_add,
+              weight: 200,
+            ),
             tooltip: "초대",
             onPressed: () {
               Navigator.push(
@@ -220,11 +231,11 @@ class _ConversationScreenState extends State<ConversationScreen> {
           ),
         ],
       ),
-      body: Container(
+      body: SafeArea(
         child: Stack(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height,
+              height: MediaQuery.of(context).size.height - 65,
               margin: const EdgeInsets.only(bottom: 65),
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColorDark,
@@ -254,7 +265,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                 TextButton(
                                   child: Row(
                                     children: [
-                                      Icon(CupertinoIcons.xmark),
+                                      Icon(
+                                        MaterialSymbols.close,
+                                        weight: 200,
+                                      ),
                                       Text(" 취소"),
                                     ],
                                   ),
@@ -263,7 +277,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                 TextButton(
                                   child: Row(
                                     children: [
-                                      Icon(CupertinoIcons.paperclip),
+                                      Icon(
+                                        MaterialSymbols.attach_file,
+                                        weight: 200,
+                                      ),
                                       Text(" 파일"),
                                     ],
                                   ),
@@ -276,7 +293,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                 TextButton(
                                   child: Row(
                                     children: [
-                                      Icon(CupertinoIcons.photo),
+                                      Icon(
+                                        MaterialSymbols.image,
+                                        weight: 200,
+                                      ),
                                       Text(" 사진"),
                                     ],
                                   ),
@@ -301,7 +321,8 @@ class _ConversationScreenState extends State<ConversationScreen> {
                         padding: EdgeInsets.all(1),
                         margin: EdgeInsets.only(right: 5),
                         child: Icon(
-                          CupertinoIcons.plus_app,
+                          MaterialSymbols.add,
+                          weight: 200,
                           color: Colors.black26,
                           size: 30,
                         ),
@@ -322,71 +343,80 @@ class _ConversationScreenState extends State<ConversationScreen> {
                     GestureDetector(
                       onTapDown: (tapDownDetails) {
                         Vibration.vibrate(pattern: [0, 5]);
-                         timer = Timer.periodic(Duration(milliseconds: 900), (timer) {
-                            setState(() {
-                              pushSecond++;
-                              if (pushSecond >= 2) {
-                                Vibration.vibrate(pattern: [0, 5]);
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text("파일/사진 공유"),
-                                      content: Text("파일, 사진 중 어떤 것을 공유할까요?"),
-                                      actions: [
-                                        TextButton(
-                                          child: Row(
-                                            children: [
-                                              Icon(CupertinoIcons.xmark),
-                                              Text(" 취소"),
-                                            ],
-                                          ),
-                                          onPressed: () =>
-                                              Navigator.pop(context),
+                        timer = Timer.periodic(Duration(milliseconds: 900),
+                            (timer) {
+                          setState(() {
+                            pushSecond++;
+                            if (pushSecond >= 2) {
+                              Vibration.vibrate(pattern: [0, 5]);
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text("파일/사진 공유"),
+                                    content: Text("파일, 사진 중 어떤 것을 공유할까요?"),
+                                    actions: [
+                                      TextButton(
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              MaterialSymbols.close,
+                                              weight: 200,
+                                            ),
+                                            Text(" 취소"),
+                                          ],
                                         ),
-                                        TextButton(
-                                          child: Row(
-                                            children: [
-                                              Icon(CupertinoIcons.paperclip),
-                                              Text(" 파일"),
-                                            ],
-                                          ),
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                            StorageMethods().toUploadFile(
-                                                widget.chatRoomId);
-                                          },
+                                        onPressed: () => Navigator.pop(context),
+                                      ),
+                                      TextButton(
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              MaterialSymbols.attach_file,
+                                              weight: 200,
+                                            ),
+                                            Text(" 파일"),
+                                          ],
                                         ),
-                                        TextButton(
-                                          child: Row(
-                                            children: [
-                                              Icon(CupertinoIcons.photo),
-                                              Text(" 사진"),
-                                            ],
-                                          ),
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                            StorageMethods().toUploadImage(
-                                                widget.chatRoomId);
-                                          },
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          StorageMethods()
+                                              .toUploadFile(widget.chatRoomId);
+                                        },
+                                      ),
+                                      TextButton(
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              MaterialSymbols.image,
+                                              weight: 200,
+                                            ),
+                                            Text(" 사진"),
+                                          ],
                                         ),
-                                      ],
-                                    );
-                                  },
-                                );
-                                timer?.cancel();
-                                pushSecond = 0;
-                              }
-                            });
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          StorageMethods()
+                                              .toUploadImage(widget.chatRoomId);
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                              timer?.cancel();
+                              pushSecond = 0;
+                            }
                           });
-
+                        });
                       },
                       onTapUp: (tapUpDetails) {
                         timer?.cancel();
                         Vibration.vibrate(pattern: [0, 5]);
 
                         if (messageController.text.trimLeft().trimRight() !=
-                            "" && pushSecond <= 1) {
+                                "" &&
+                            pushSecond <= 1) {
                           sendMessage();
                         }
                         pushSecond = 0;
@@ -400,9 +430,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
                         ),
                         padding: EdgeInsets.all(5),
                         child: Icon(
-                          CupertinoIcons.up_arrow,
+                          MaterialSymbols.arrow_upward,
                           color: Colors.white,
                           size: 25,
+                          weight: 200,
                         ),
                       ),
                     )
@@ -538,6 +569,7 @@ class MessageTile extends StatelessWidget {
                           Icons.arrow_circle_down_outlined,
                           color: Colors.white,
                           size: 40,
+                          weight: 200,
                         ),
                       ),
                       Flexible(

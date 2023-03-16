@@ -4,6 +4,7 @@ import 'package:chat_app/widgets/widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 
 class Search extends StatefulWidget {
   @override
@@ -110,9 +111,10 @@ class _SearchState extends State<Search> {
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: Icon(
                 userId == Constants.myId
-                    ? Icons.person_add_disabled_outlined
-                    : Icons.person_add_outlined,
+                    ? MaterialSymbols.person_add_disabled
+                    : MaterialSymbols.person_add,
                 color: Colors.white,
+                weight: 200,
               ), //하얀색 메시지 아이콘
             ),
           )
@@ -160,8 +162,9 @@ class _SearchState extends State<Search> {
                             onPressed: () =>
                                 searchTextEditingController.clear(),
                             icon: Icon(
-                              CupertinoIcons.clear_thick_circled,
-                              color: Colors.black26,
+                              MaterialSymbols.cancel_filled,
+                              color: Colors.black54,
+                              weight: 100,
                             ),
                           ),
                         ),

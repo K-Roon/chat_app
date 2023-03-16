@@ -7,6 +7,7 @@ import 'package:chat_app/views/search.dart';
 import 'package:chat_app/widgets/widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 
 class FriendsCheckScreen extends StatefulWidget {
   final String roomId;
@@ -82,7 +83,7 @@ class _FriendsCheckScreenState extends State<FriendsCheckScreen> {
       resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        child: Icon(CupertinoIcons.check_mark),
+        child: Icon(MaterialSymbols.check, weight: 200,),
         tooltip: "확인",
         onPressed: () {
           Navigator.pop(context);
@@ -98,7 +99,7 @@ class _FriendsCheckScreenState extends State<FriendsCheckScreen> {
             IconButton(
               tooltip: '취소',
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.xmark),
+              icon: Icon(MaterialSymbols.close, weight: 200,),
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -106,7 +107,7 @@ class _FriendsCheckScreenState extends State<FriendsCheckScreen> {
             IconButton(
               tooltip: '검색',
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              icon: Icon(CupertinoIcons.search),
+              icon: Icon(MaterialSymbols.search, weight: 200,),
               onPressed: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Search()));
@@ -164,8 +165,9 @@ class FriendsPlusTile extends StatelessWidget {
                   color: Colors.blue, borderRadius: BorderRadius.circular(30)),
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: Icon(
-                CupertinoIcons.person_badge_plus,
+                MaterialSymbols.person_add,
                 color: Colors.white,
+                weight: 200,
               ),
             ),
           ),
