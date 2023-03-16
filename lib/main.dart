@@ -11,8 +11,12 @@ void main() async {
   await Firebase.initializeApp();
   runApp(MyApp());
   print("IT'S RUNNING...\n애플리케이션의 작동을 시작합니다.");
-  SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent));
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge,
+      overlays: [SystemUiOverlay.top]);
 }
 
 class MyApp extends StatefulWidget {

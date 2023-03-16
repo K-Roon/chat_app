@@ -120,155 +120,159 @@ class _SignInState extends State<SignIn> {
       appBar: appBarCustom(context, "로그인", true),
       //resizeToAvoidBottomInset: false,
       body: isLoading
-          ? Container(
-              child: Center(child: CircularProgressIndicator()),
-            )
-          : Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              decoration: BoxDecoration(
-                /*
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [const Color(0x002F2F2F), const Color(0xff2F2F2F)],
-                  stops: [0.05, 0.5],
-                ),*/
-                borderRadius: BorderRadius.circular(10),
+          ? SafeArea(
+            child: Container(
+                child: Center(child: CircularProgressIndicator()),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Form(
-                    key: formKey,
-                    child: Column(
+          )
+          : SafeArea(
+            child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                  /*
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [const Color(0x002F2F2F), const Color(0xff2F2F2F)],
+                    stops: [0.05, 0.5],
+                  ),*/
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Form(
+                      key: formKey,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            validator: (val) {
+                              return RegExp(
+                                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                      .hasMatch(val)
+                                  ? null
+                                  : "올바른 이메일을 입력해주세요.";
+                            },
+                            controller: emailTextEditingController,
+                            style: simpleTextStyle(context),
+                            decoration: textFieldInputDecoration(context, "이메일"),
+                            keyboardType: TextInputType.emailAddress,
+                            textInputAction: TextInputAction.next,
+                          ),
+                          TextFormField(
+                            obscureText: true,
+                            validator: (val) {
+                              if (val.length < 6) {
+                                return "6자 이상되는 비밀번호를 입력해주세요.";
+                              } else {
+                                return null;
+                              }
+                            },
+                            style: simpleTextStyle(context),
+                            controller: passwordTextEditingController,
+                            textInputAction: TextInputAction.go,
+                            decoration: textFieldInputDecoration(context, "비밀번호"),
+                            onEditingComplete: (() {
+                              signIn();
+                            }),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        TextFormField(
-                          validator: (val) {
-                            return RegExp(
-                                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                    .hasMatch(val)
-                                ? null
-                                : "올바른 이메일을 입력해주세요.";
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ForgotPassword()));
                           },
-                          controller: emailTextEditingController,
-                          style: simpleTextStyle(context),
-                          decoration: textFieldInputDecoration(context, "이메일"),
-                          keyboardType: TextInputType.emailAddress,
-                          textInputAction: TextInputAction.next,
-                        ),
-                        TextFormField(
-                          obscureText: true,
-                          validator: (val) {
-                            if (val.length < 6) {
-                              return "6자 이상되는 비밀번호를 입력해주세요.";
-                            } else {
-                              return null;
-                            }
-                          },
-                          style: simpleTextStyle(context),
-                          controller: passwordTextEditingController,
-                          textInputAction: TextInputAction.go,
-                          decoration: textFieldInputDecoration(context, "비밀번호"),
-                          onEditingComplete: (() {
-                            signIn();
-                          }),
-                        ),
+                          child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 8),
+                              child: Text(
+                                "비밀번호를 잊으셨나요?",
+                                style: simpleTextStyle(context),
+                              )),
+                        )
                       ],
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ForgotPassword()));
-                        },
-                        child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 8),
-                            child: Text(
-                              "비밀번호를 잊으셨나요?",
-                              style: simpleTextStyle(context),
+                    spaceH16(),
+                    GestureDetector(
+                      onTap: () {
+                        signIn();
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 16),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            gradient: LinearGradient(
+                              colors: [
+                                const Color(0xff007EF4),
+                                const Color(0xff009955)
+                              ],
                             )),
-                      )
-                    ],
-                  ),
-                  spaceH16(),
-                  GestureDetector(
-                    onTap: () {
-                      signIn();
-                    },
-                    child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                          "로그인",
+                          style: biggerTextStyle(),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                    spaceH16(),
+                    Container(
                       padding: EdgeInsets.symmetric(vertical: 16),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
                           gradient: LinearGradient(
                             colors: [
-                              const Color(0xff007EF4),
-                              const Color(0xff009955)
+                              const Color(0xff4285F4),
+                              const Color(0xffEA4335),
+                              const Color(0xffEA4335),
+                              const Color(0xffFBBC05),
+                              const Color(0xffFBBC05),
+                              const Color(0xff34A853),
                             ],
+                            stops: [0.25, 0.25, 0.50, 0.50, 0.75, 0.75],
                           )),
                       width: MediaQuery.of(context).size.width,
                       child: Text(
-                        "로그인",
-                        style: biggerTextStyle(),
+                        "Google 계정으로 로그인",
+                        style:
+                            TextStyle(fontSize: 17, color: CustomTheme.textColor),
                         textAlign: TextAlign.center,
                       ),
                     ),
-                  ),
-                  spaceH16(),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 16),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        gradient: LinearGradient(
-                          colors: [
-                            const Color(0xff4285F4),
-                            const Color(0xffEA4335),
-                            const Color(0xffEA4335),
-                            const Color(0xffFBBC05),
-                            const Color(0xffFBBC05),
-                            const Color(0xff34A853),
-                          ],
-                          stops: [0.25, 0.25, 0.50, 0.50, 0.75, 0.75],
-                        )),
-                    width: MediaQuery.of(context).size.width,
-                    child: Text(
-                      "Google 계정으로 로그인",
-                      style:
-                          TextStyle(fontSize: 17, color: CustomTheme.textColor),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  spaceH16(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "계정이 없으신가요? ",
-                        style: simpleTextStyle(context),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          widget.toggleView();
-                        },
-                        child: Text(
-                          "가입하세요",
-                          style: TextStyle(
-                              color: Theme.of(context).backgroundColor,
-                              fontSize: 16,
-                              decoration: TextDecoration.underline),
+                    spaceH16(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "계정이 없으신가요? ",
+                          style: simpleTextStyle(context),
                         ),
-                      ),
-                    ],
-                  ),
-                  spaceH16()
-                ],
+                        GestureDetector(
+                          onTap: () {
+                            widget.toggleView();
+                          },
+                          child: Text(
+                            "가입하세요",
+                            style: TextStyle(
+                                color: Theme.of(context).backgroundColor,
+                                fontSize: 16,
+                                decoration: TextDecoration.underline),
+                          ),
+                        ),
+                      ],
+                    ),
+                    spaceH16()
+                  ],
+                ),
               ),
-            ),
+          ),
     );
   }
 }
