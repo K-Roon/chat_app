@@ -14,6 +14,7 @@ import 'package:chat_app/widgets/widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 
 class FriendsScreen extends StatefulWidget {
   @override
@@ -92,7 +93,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
       resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       floatingActionButton: FloatingActionButton(
-        child: Icon(CupertinoIcons.search),
+        child: Icon(MaterialSymbols.search, weight: 200),
         tooltip: "검색",
         onPressed: () {
           Navigator.push(
@@ -110,7 +111,8 @@ class _FriendsScreenState extends State<FriendsScreen> {
               tooltip: '채팅 목록',
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               icon: Icon(
-                CupertinoIcons.chat_bubble_text,
+                MaterialSymbols.forum,
+                weight: 200,
                 color: Theme.of(context).backgroundColor,
               ),
               onPressed: () {
@@ -123,7 +125,8 @@ class _FriendsScreenState extends State<FriendsScreen> {
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               icon: Icon(
-                CupertinoIcons.escape,
+                MaterialSymbols.logout,
+                weight: 200,
                 color: Theme.of(context).backgroundColor,
               ),
               tooltip: "로그아웃",
@@ -165,7 +168,8 @@ class _FriendsScreenState extends State<FriendsScreen> {
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               icon: Icon(
-                CupertinoIcons.info_circle,
+                MaterialSymbols.info,
+                weight: 200,
                 color: Theme.of(context).backgroundColor,
               ),
               tooltip: "앱 정보 및 업데이트 확인",
@@ -239,7 +243,7 @@ class FriendsTile extends StatelessWidget {
           ),
           Spacer(),
           IconButton(
-            icon: Icon(Icons.more_horiz),
+            icon: Icon(Icons.more_horiz, weight: 200,),
             color: Theme.of(context).backgroundColor,
             tooltip: "$friendName 님의 상세 정보",
             onPressed: () {
@@ -279,7 +283,7 @@ class FriendsTile extends StatelessWidget {
                 ),
                 Spacer(),
                 IconButton(
-                  icon: Icon(Icons.more_horiz),
+                  icon: Icon(Icons.more_horiz, weight: 200,),
                   color: Colors.white,
                   tooltip: "$friendName 님의 상세 정보",
                   onPressed: () {
@@ -287,7 +291,7 @@ class FriendsTile extends StatelessWidget {
                   },
                 ),
                 new IconButton(
-                  icon: Icon(Icons.clear_rounded),
+                  icon: Icon(Icons.clear_rounded, weight: 200,),
                   tooltip: "돌아가기",
                   onPressed: () {
                     Navigator.pop(context);

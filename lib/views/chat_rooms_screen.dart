@@ -11,6 +11,7 @@ import 'package:chat_app/widgets/widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_symbols/flutter_material_symbols.dart';
 
 class ChatRoom extends StatefulWidget {
   @override
@@ -90,7 +91,7 @@ class _ChatRoomState extends State<ChatRoom> {
       resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       floatingActionButton: FloatingActionButton(
-        child: Icon(CupertinoIcons.search),
+        child: Icon(MaterialSymbols.search, weight: 200),
         tooltip: "검색",
         onPressed: () {
           Navigator.push(
@@ -108,7 +109,8 @@ class _ChatRoomState extends State<ChatRoom> {
               tooltip: '친구',
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               icon: Icon(
-                CupertinoIcons.person_2,
+                MaterialSymbols.group,
+                weight: 200,
                 color: Theme.of(context).backgroundColor,
               ),
               onPressed: () {
@@ -120,7 +122,8 @@ class _ChatRoomState extends State<ChatRoom> {
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               icon: Icon(
-                CupertinoIcons.escape,
+                MaterialSymbols.logout,
+                weight: 200,
                 color: Theme.of(context).backgroundColor,
               ),
               tooltip: "로그아웃",
@@ -164,7 +167,8 @@ class _ChatRoomState extends State<ChatRoom> {
             IconButton(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               icon: Icon(
-                CupertinoIcons.info_circle,
+                MaterialSymbols.info_outlined,
+                weight: 200,
                 color: Theme.of(context).backgroundColor,
               ),
               tooltip: "앱 정보",
